@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ASM_Android2</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="introduce">Giới thiệu</string>
+    <string name="manage">Quản lý sản phẩm</string>
+    <string name="ng_xu_t">Đăng xuất</string>
+    <string name="c_i_t">Cài đặt</string>
+    <string name="kh_c">Khác</string>
+
+</resources>

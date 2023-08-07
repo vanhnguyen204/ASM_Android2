@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Thêm sản phẩm"
+        android:textAllCaps="true"
+        android:textColor="#62A41C"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên sản phẩm:"
+        android:textSize="18sp"
+        />
+
+    <EditText
+        android:id="@+id/edt_nameProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:background="@drawable/custom_edt"
+        android:padding="10dp" />
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá:" />
+
+    <EditText
+        android:id="@+id/edt_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:background="@drawable/custom_edt"
+        android:padding="10dp" />
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số lượng:" />
+
+    <EditText
+        android:id="@+id/edt_quatity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:background="@drawable/custom_edt"
+        android:padding="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_btnlogin"
+        android:text="Thêm"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</LinearLayout>

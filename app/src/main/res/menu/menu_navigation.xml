@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/product"
+        android:icon="@mipmap/box"
+
+        android:title="@string/manage" />
+
+    <item
+        android:id="@+id/introduce"
+        android:title="@string/introduce"
+        android:icon="@drawable/infinity"
+        />
+    <group
+        android:checkableBehavior="single"
+        >
+        <item
+            android:title="@string/kh_c"
+            >
+            <menu>
+                <item
+                    android:id="@+id/setting"
+                    android:title="@string/c_i_t"
+                    android:icon="@mipmap/gear"
+                    />
+                <item
+                    android:id="@+id/logOut"
+                    android:icon="@mipmap/logout"
+                    android:title="@string/ng_xu_t"
+                    />
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

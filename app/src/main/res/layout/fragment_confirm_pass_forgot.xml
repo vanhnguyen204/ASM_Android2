@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/fragment_confirm_pass"
+    android:padding="16dp"
+    tools:context=".FragmentConfirmPassForgot">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Nhập mật khẩu mới"
+        android:textStyle="bold"
+        android:textColor="#09800E"
+        android:textSize="30sp" />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/edt_passWord_forgot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edt"
+        android:hint="Nhập mật khẩu"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/edt_confirm_password_forgot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edt"
+        android:hint="Xác nhận mật khẩu"
+        android:padding="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="10dp"
+        android:id="@+id/btnConfirmPassForgot"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_btnlogin"
+        android:text="CONFIRM" />
+</LinearLayout>

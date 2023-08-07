@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".ActivitySignUp">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/logo_fpt" />
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edt"
+        android:hint="Họ và tên"
+        android:padding="14dp" />
+
+    <EditText
+        android:id="@+id/edt_userName_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edt"
+        android:hint="Tên đăng nhập"
+        android:padding="14dp" />
+
+    <EditText
+        android:id="@+id/edt_passWord_signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_edt"
+        android:hint="Mật khẩu"
+        android:padding="14dp" />
+
+    <EditText
+        android:id="@+id/edt_comfirm_password_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_edt"
+        android:hint="Xác nhận mật khẩu"
+        android:padding="14dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_btnlogin"
+        android:text="Sign Up" />
+</LinearLayout>
