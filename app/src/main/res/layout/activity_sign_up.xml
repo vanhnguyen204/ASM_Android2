@@ -40,6 +40,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_edt"
         android:hint="Mật khẩu"
+        android:inputType="textPassword"
         android:padding="14dp" />
 
     <EditText
@@ -49,6 +50,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/custom_edt"
         android:hint="Xác nhận mật khẩu"
+        android:inputType="textPassword"
         android:padding="14dp" />
 
     <androidx.appcompat.widget.AppCompatButton

@@ -24,6 +24,7 @@ import java.util.Random;
 public class FragmentForgotPassword extends Fragment {
     View view;
     EditText edtOTP;
+    int check = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,26 +44,26 @@ public class FragmentForgotPassword extends Fragment {
         EditText edtGetUsername = view.findViewById(R.id.edtUserNameFG);
         Button btnConfirmFG = view.findViewById(R.id.btnConfirmFP);
         int OTP = new Random().nextInt(1000);
+
         btnConfirmFG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < list.size(); i++) {
                     if (edtGetUsername.getText().toString().equals(list.get(i).getTenDangNhap())) {
                         Toast.makeText(getContext(), "Mã của bạn là: " + OTP, Toast.LENGTH_LONG).show();
-                       String getHoVaTen = list.get(i).getHoVaTen();
+                        String getHoVaTen = list.get(i).getHoVaTen();
                         FragmentConfirmPassForgot fragment = new FragmentConfirmPassForgot();
                         Bundle bundle = new Bundle();
                         bundle.putString("key_user", edtGetUsername.getText().toString()); // Put anything what you want
-                      bundle.putString("ho_va_ten", getHoVaTen);
+                        bundle.putString("ho_va_ten", getHoVaTen);
                         getParentFragmentManager().setFragmentResult("key", bundle);
-
-
                         createAlertOTP(OTP);
+                        check++;
 
-
-                    }else{
-                        Toast.makeText(getContext(), "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
                     }
+                }
+                if (check == 0){
+                    Toast.makeText(getContext(), "Tài khoản không tồn tại !", Toast.LENGTH_SHORT).show();
                 }
 
             }

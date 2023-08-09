@@ -14,10 +14,13 @@ import com.fpoly.asm_android2.Database.AccountDAO;
 import com.fpoly.asm_android2.Database.DBHelper;
 import com.fpoly.asm_android2.Models.NguoiDung;
 
+import java.util.ArrayList;
+
 public class ActivitySignUp extends AppCompatActivity {
     public static  String KEY_USERNAME_SIGNUP = "user_name";
     public static String KEY_PASSWORD_SIGNUP = "pass_word";
     Button btnSignUp;
+    int check = 0;
 
     EditText edtUserName, edtPassword, edtComfirmPassWord, edtName;
     private void finId() {
@@ -43,7 +46,8 @@ public class ActivitySignUp extends AppCompatActivity {
                 String getUserName = edtUserName.getText().toString().trim();
                 String getPassWord = edtPassword.getText().toString().trim();
                 String getConfirmPassWord = edtComfirmPassWord.getText().toString().trim();
-                if (getName.length() == 0){
+
+                if (getName.length() == 0 ){
                     Toast.makeText(ActivitySignUp.this, "không được để trống họ và tên !", Toast.LENGTH_SHORT).show();
                 }else if (getUserName.length() == 0){
                     Toast.makeText(ActivitySignUp.this, "không được để trống tên đăng nhập !", Toast.LENGTH_SHORT).show();
@@ -57,12 +61,6 @@ public class ActivitySignUp extends AppCompatActivity {
                     NguoiDung nguoiDung = new NguoiDung(getUserName,getPassWord,getName);
                     accountDAO.insertNguoiDung(nguoiDung);
 
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putString(KEY_USERNAME_SIGNUP, getUserName);
-                    bundle.putString(KEY_PASSWORD_SIGNUP,getPassWord);
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK,intent);
                     finish();
                 }
             }

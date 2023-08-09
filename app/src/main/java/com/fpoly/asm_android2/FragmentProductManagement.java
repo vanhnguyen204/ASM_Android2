@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.fpoly.asm_android2.Database.DBHelperProduct;
@@ -50,6 +51,7 @@ public class FragmentProductManagement extends Fragment {
         list = productDAO.getListproduct();
         recyclerViewProductAdapter = new RecyclerViewProductAdapter(list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recyclerViewProductAdapter);
         fab = view.findViewById(R.id.fab);
@@ -87,10 +89,13 @@ public class FragmentProductManagement extends Fragment {
 
                 } else if (getNameProduct.length() == 0) {
                     Toast.makeText(getActivity(), "Không được để trống tên sản phẩm !", Toast.LENGTH_SHORT).show();
+                    edtNameProduct.setError("Null");
                 } else if (getPrice.length() == 0) {
                     Toast.makeText(getActivity(), "Không được để trống giá sản phẩm !", Toast.LENGTH_SHORT).show();
+                    edtPrice.setError("Null");
                 } else if (getQuatity.length() == 0) {
                     Toast.makeText(getActivity(), "Không được để trống số lượng sản phẩm !", Toast.LENGTH_SHORT).show();
+             edtQuatity.setError("Null");
                 } else {
                     SanPham sanPham = new SanPham(new Random().nextInt(10000), getNameProduct, Integer.parseInt(getPrice), Integer.parseInt(getQuatity));
                     list.add(sanPham);

@@ -40,24 +40,7 @@ public class ActivityLogin extends AppCompatActivity {
         txtForGotPass = findViewById(R.id.txt_forgot_pass);
     }
 
-    ActivityResultLauncher<Intent> getDataSignUp = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        Intent intent = result.getData();
-                        if (intent != null) {
-                            String getUser = intent.getStringExtra(ActivitySignUp.KEY_USERNAME_SIGNUP);
-                            String getPass = intent.getStringExtra(ActivitySignUp.KEY_PASSWORD_SIGNUP);
-                            edtPass.setText(getPass);
-                            edtuser.setText(getUser);
-                        }
 
-                    }
-                }
-            }
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +62,7 @@ public class ActivityLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityLogin.this, ActivitySignUp.class);
-                getDataSignUp.launch(intent);
+             startActivity(intent);
             }
         });
 
@@ -91,7 +74,6 @@ public class ActivityLogin extends AppCompatActivity {
         animation.setRepeatMode(Animation.RELATIVE_TO_SELF);
         animation.setRepeatCount(Animation.INFINITE);
         textView.setAnimation(animation);
-
 
 
         edtuser.setOnClickListener(new View.OnClickListener() {
@@ -107,26 +89,28 @@ public class ActivityLogin extends AppCompatActivity {
         });
 
         ArrayList<NguoiDung> list = accountDAO.getList();
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String getUser = edtuser.getText().toString().trim();
                 String getPass = edtPass.getText().toString().trim();
-                NguoiDung nguoiDung = accountDAO.checkAccount();
+
                 if (getUser.length() == 0) {
                     edtuser.setError("Null");
-
                     Toast.makeText(ActivityLogin.this, "Bạn chưa nhập tên đăng nhập", Toast.LENGTH_SHORT).show();
                 } else if (getPass.length() == 0) {
                     edtPass.setError("Null");
                     Toast.makeText(ActivityLogin.this, "Bạn chưa nhập mật khẩu", Toast.LENGTH_SHORT).show();
-                } else if (getPass.equals(nguoiDung.getMatKhau()) && getUser.equals(nguoiDung.getTenDangNhap())) {
+                } else if (accountDAO.checkAccount(getUser, getPass)) {
 
-                    Toast.makeText(ActivityLogin.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(ActivityLogin.this, MainActivity.class);
                     startActivity(intent);
+                    edtuser.setText("");
+                    edtPass.setText("");
                 } else {
-                    Toast.makeText(ActivityLogin.this, "Đăng nhập thất bại !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogin.this, "Tài khoản hoặc mật khẩu không chính xác !", Toast.LENGTH_SHORT).show();
 
                 }
 

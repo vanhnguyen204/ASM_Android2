@@ -27,9 +27,9 @@ public class AccountDAO {
         contentValues.put("HoVaTen", nguoiDung.getHoVaTen());
         long kq = sql.insert("NguoiDung", null, contentValues);
         if (kq > 0)
-            Toast.makeText(context, "Thành công!",
+            Toast.makeText(context, "Tạo tài khoản thành công!",
                     Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Thất bại!",
+        else Toast.makeText(context, "Tài khoản đã tồn tại !",
                 Toast.LENGTH_SHORT).show();
     }
 
@@ -37,18 +37,18 @@ public class AccountDAO {
         SQLiteDatabase sql = dbHelper.getReadableDatabase();
         long kq = sql.delete("NguoiDung", "TenDangNhap = ?", new String[]{nguoiDung.getTenDangNhap()});
         if (kq > 0)
-            Toast.makeText(context, "Thành công!",
+            Toast.makeText(context, "Xoá thành công!",
                     Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Thất bại!",
+        else Toast.makeText(context, "Xoá thất bại!",
                 Toast.LENGTH_SHORT).show();
     }
     public void deleteAccount(String user) {
         SQLiteDatabase sql = dbHelper.getReadableDatabase();
         long kq = sql.delete("NguoiDung", "TenDangNhap = ?", new String[]{user});
         if (kq > 0)
-            Toast.makeText(context, "Thành công!",
+            Toast.makeText(context, "Xoá thành công!",
                     Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Thất bại!",
+        else Toast.makeText(context, "Xoá thất bại!",
                 Toast.LENGTH_SHORT).show();
     }
     public void updateNguoiDung(NguoiDung nguoiDung) {
@@ -68,10 +68,9 @@ public class AccountDAO {
     public void updateForgotPasss(String userName, String passNew) {
         SQLiteDatabase sql = dbHelper.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
-
         contentValues.put("MatKhau", passNew);
-
         long kq = sql.update("NguoiDung", contentValues, "TenDangNhap = ? ", new String[]{userName});
+
         if (kq > 0)
             Toast.makeText(context, "Thành công!",
                     Toast.LENGTH_SHORT).show();
@@ -80,28 +79,22 @@ public class AccountDAO {
                     Toast.LENGTH_SHORT).show();
     }
 
-    public NguoiDung checkAccount() {
-        NguoiDung nguoiDung = null;
+    public boolean checkAccount(String tk, String mk) {
+
         SQLiteDatabase sql = dbHelper.getReadableDatabase();
         sql.beginTransaction();
         try {
-            Cursor cursor = sql.rawQuery("SELECT * FROM NguoiDung", null);
+            Cursor cursor = sql.rawQuery("SELECT * FROM NguoiDung where TenDangNhap = ? and MatKhau = ?" , new String[]{tk, mk});
             if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    String getTenDangNhap = cursor.getString(0);
-                    String getMatKhau = cursor.getString(1);
-                    String getHoVaTen = cursor.getString(2);
-                 nguoiDung = new NguoiDung(getTenDangNhap, getMatKhau, getHoVaTen);
-                } while (cursor.moveToNext());
-                sql.setTransactionSuccessful();
+                Toast.makeText(context, "Đăng  nhập thành công", Toast.LENGTH_SHORT).show();
+                return true;
             }
         } catch (Exception e) {
 
         } finally {
             sql.endTransaction();
         }
-        return nguoiDung;
+      return false;
     }
 
     public ArrayList<NguoiDung> getList() {

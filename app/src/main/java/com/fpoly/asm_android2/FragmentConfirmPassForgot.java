@@ -1,7 +1,6 @@
 package com.fpoly.asm_android2;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

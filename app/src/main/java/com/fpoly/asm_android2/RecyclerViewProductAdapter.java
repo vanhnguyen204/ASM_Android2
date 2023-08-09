@@ -55,7 +55,7 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
             @Override
             public void onClick(View v) {
 
-                createAlertDialogUpdate(v.getContext(), position);
+                createAlertDialogUpdate(v.getContext(), position,sanPham);
             }
         });
 
@@ -103,7 +103,7 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
         }
     }
 
-    void createAlertDialogUpdate(Context context, int position) {
+    void createAlertDialogUpdate(Context context, int position, SanPham sanPham) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.Style_AlertDialog_Corner);
         View view = LayoutInflater.from(context).inflate(R.layout.custom_alertdialog, null);
         builder.setView(view);
@@ -115,6 +115,9 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
         edtQuatityProduct = view.findViewById(R.id.edt_quatity);
         btnUpdate = view.findViewById(R.id.btnAddProduct);
         btnUpdate.setText("Sửa");
+        edtName.setText(sanPham.getTenSp());
+        edtQuatityProduct.setText(sanPham.getSoLuong()+"");
+        edtPrice.setText(sanPham.getGiaSp()+"");
         ProductDAO productDAO = new ProductDAO(new DBHelperProduct(context), context);
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +126,9 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
                 String getNameProduct = edtName.getText().toString().trim();
                 String getPrice = edtPrice.getText().toString().trim();
                 String getQuatity = edtQuatityProduct.getText().toString().trim();
-               if (checkValues(v.getContext())){
+                if (checkValues(v.getContext())) {
 
-               }else if (getNameProduct.length() == 0) {
+                } else if (getNameProduct.length() == 0) {
                     Toast.makeText(context, "Không được để trống tên sản phẩm !", Toast.LENGTH_SHORT).show();
                 } else if (getPrice.length() == 0) {
                     Toast.makeText(context, "Không được để trống giá sản phẩm !", Toast.LENGTH_SHORT).show();
@@ -143,6 +146,7 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
             }
         });
     }
+
     boolean checkValues(Context context) {
         try {
             int price = Integer.parseInt(edtPrice.getText().toString().trim());
